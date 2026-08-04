@@ -99,7 +99,9 @@ export function ToastHost() {
             >
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
                 {toast.kind === 'loading' && (
-                  <Loader2 size={16} className="spin-icon" style={{ color: 'var(--gold-accent)', animation: 'spin 1.2s linear infinite', flexShrink: 0, marginTop: 2 }} />
+                  <span style={{ display: 'inline-flex', color: 'var(--gold-accent)', animation: 'spin 1.2s linear infinite', flexShrink: 0, marginTop: 2 }}>
+                    <Loader2 size={16} className="spin-icon" />
+                  </span>
                 )}
                 <div style={{ flex: 1, minWidth: 0 }}>
                   <h5 className="gothic-header" style={{ fontSize: '1rem', margin: 0 }}>
