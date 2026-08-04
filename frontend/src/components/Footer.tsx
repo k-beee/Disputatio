@@ -13,7 +13,7 @@ export function Footer() {
   };
 
   return (
-    <footer style={{ marginTop: '5rem', padding: '3rem 0 4rem', borderTop: '1px solid var(--border)', backgroundColor: 'var(--bg-secondary)', color: var(--text-muted), fontSize: '0.9rem' }}>
+    <footer style={{ marginTop: '5rem', padding: '3rem 0 4rem', borderTop: '1px solid var(--border)', backgroundColor: 'var(--bg-secondary)', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
       <div className="shell" style={{ display: 'grid', gap: '2rem' }}>
         <div style={{ textAlign: 'center', margin: '0 auto', maxWidth: '680px', display: 'grid', gap: '0.75rem' }}>
           <h4 className="gothic-header" style={{ color: 'var(--crimson-accent)', fontSize: '1.4rem', letterSpacing: '0.05em' }}>
