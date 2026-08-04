@@ -71,7 +71,11 @@ export function Header({ wallet, stats, onRefreshStats }: HeaderProps) {
                 disabled={isWithdrawing || !wallet.userAddress}
                 style={{ fontSize: '0.6rem', padding: '0.15rem 0.4rem', marginLeft: '0.5rem', backgroundColor: 'var(--crimson-accent)', color: '#fff', border: 'none' }}
               >
-                {isWithdrawing ? <Loader2 size={10} style={{ animation: 'spin 1s linear infinite' }} /> : 'Withdraw'}
+                {isWithdrawing ? (
+                  <span style={{ display: 'inline-flex', animation: 'spin 1s linear infinite' }}>
+                    <Loader2 size={10} />
+                  </span>
+                ) : 'Withdraw'}
               </button>
             </div>
           ) : null}

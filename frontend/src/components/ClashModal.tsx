@@ -264,7 +264,9 @@ export function ClashModal({
         {/* Signing in wallet */}
         {tx.currentPhase === 'signing' ? (
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '2rem 1rem', color: 'var(--text-muted)' }}>
-            <Loader2 size={16} style={{ animation: 'spin 1s linear infinite', color: 'var(--gold-accent)' }} />
+            <span style={{ display: 'inline-flex', animation: 'spin 1s linear infinite', color: 'var(--gold-accent)' }}>
+              <Loader2 size={16} />
+            </span>
             <span>Approve transaction fee in browser wallet...</span>
           </div>
         ) : null}
