@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+ENV/
+env/
+
+# GenLayer compilation/testing artifacts
+artifacts/
+.gltest/
+gltest.config.yaml.user
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+.env.staging
+
+# OS files
+.DS_Store
+Thumbs.db
