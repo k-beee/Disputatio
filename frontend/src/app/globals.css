@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
+
+:root {
+  /* Scholastic Scriptorium (Light Mode - Parchment Paper) */
+  --bg-primary: #fcf8f2;
+  --bg-secondary: #f4edd4;
+  --surface: #fbf5e6;
+  --surface-header: #f2e9c9;
+  --border: #dfd4b7;
+  --border-strong: #8c7355;
+  --text-primary: #2b1f13;
+  --text-muted: #4f3d2a;
+  --text-faint: #80684f;
+  --white-chalk: #2b1f13;
+  
+  /* Accent Colors */
+  --crimson-accent: #991b1b;
+  --crimson-glow: rgba(153, 27, 27, 0.1);
+  --gold-accent: #d97706;
+  --gold-glow: rgba(217, 119, 6, 0.15);
+  --teal-accent: #15803d;
+  --teal-glow: rgba(21, 128, 61, 0.15);
+  
+  --font-display: 'Cinzel', serif;
+  --font-gothic: 'Almendra', serif;
+  --font-body: 'EB Garamond', serif;
+  
+  --shadow-medieval: 0 4px 12px rgba(43, 31, 19, 0.08), 0 1px 4px rgba(43, 31, 19, 0.04);
+}
+
+[data-theme='dark'] {
+  /* Monasterium Night (Dark Mode - Velvet Scriptorium) */
+  --bg-primary: #120e0a;
+  --bg-secondary: #1a140f;
+  --surface: #1e1812;
+  --surface-header: #281f18;
+  --border: #3b2e23;
+  --border-strong: #80644b;
+  --text-primary: #efe7db;
+  --text-muted: #d0c2b0;
+  --text-faint: #9c8975;
+  --white-chalk: #ffffff;
+  
+  /* Accent Colors */
+  --crimson-accent: #ef4444;
+  --crimson-glow: rgba(239, 68, 68, 0.2);
+  --gold-accent: #fbbf24;
+  --gold-glow: rgba(251, 191, 36, 0.2);
+  --teal-accent: #34d399;
+  --teal-glow: rgba(52, 211, 153, 0.2);
+  
+  --shadow-medieval: 0 4px 20px rgba(0, 0, 0, 0.4), 0 1px 6px rgba(0, 0, 0, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body), serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background candlelit ambient glow */
+.ambient-scriptorium {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 20%, var(--gold-glow) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--white-chalk);
+  letter-spacing: 0.05em;
+}
+
+.gothic-header {
+  font-family: var(--font-gothic), serif;
+  font-weight: 700;
+}
+
+.uppercase-tab {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* Scholastic components */
+.parchment-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-medieval);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Medieval double border effect */
+.parchment-card::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px solid rgba(140, 115, 85, 0.12);
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+.parchment-card:hover {
+  border-color: var(--border-strong);
+}
+
+.parchment-card-gold {
+  border-color: var(--gold-accent);
+}
+
+.parchment-card-crimson {
+  border-color: var(--crimson-accent);
+}
+
+/* Button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.25rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--crimson-accent);
+  color: #ffffff;
+  border: 1px solid var(--crimson-accent);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: transparent;
+  color: var(--crimson-accent);
+  box-shadow: 0 0 10px var(--crimson-glow);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: var(--bg-secondary);
+  border-color: var(--text-primary);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  background-color: var(--bg-secondary);
+  color: var(--text-muted);
+}
+
+.badge-gold {
+  color: var(--gold-accent);
+  border-color: var(--gold-accent);
+  background-color: var(--gold-glow);
+}
+
+.badge-crimson {
+  color: var(--crimson-accent);
+  border-color: var(--crimson-accent);
+  background-color: var(--crimson-glow);
+}
+
+.badge-teal {
+  color: var(--teal-accent);
+  border-color: var(--teal-accent);
+  background-color: var(--teal-glow);
+}
+
+/* Input Fields */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.input-field:focus {
+  border-color: var(--border-strong);
+  box-shadow: 0 0 6px var(--gold-glow);
+}
+
+/* Stepper Steppers */
+.step-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.step-node {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.step-line {
+  height: 2px;
+  background-color: var(--border);
+  transition: background-color 0.4s ease;
+}
+
+.step-line-active {
+  background-color: var(--gold-accent);
+}
+
+/* Medieval Seal / Stamp */
+.scholastic-stamp {
+  font-family: var(--font-gothic);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 3px double;
+  padding: 0.35rem 1rem;
+  transform: rotate(-3deg);
+  display: inline-block;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.stamp-defended {
+  color: var(--teal-accent);
+  border-color: var(--teal-accent);
+  background-color: var(--teal-glow);
+}
+
+.stamp-overthrown {
+  color: var(--crimson-accent);
+  border-color: var(--crimson-accent);
+  background-color: var(--crimson-glow);
+}
+
+/* Divider lines */
+.scholastic-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-strong), transparent);
+  margin: 1.25rem 0;
+}
+
+/* Layout Grid */
+.layout-triptych {
+  display: grid;
+  grid-template-columns: 300px 1fr 280px;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .layout-triptych {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Directory listing items */
+.directory-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-left: 2px solid transparent;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.directory-item:hover {
+  background-color: var(--bg-secondary);
+}
+
+.directory-item-selected {
+  border-left-color: var(--crimson-accent);
+  background-color: var(--surface);
+  font-weight: 600;
+}
+
+/* Custom Scrollbar for manuscript aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* Card Gilded Corner Details */
+.card-corner-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid var(--border-strong);
+  border-right: 2px solid var(--border-strong);
+  pointer-events: none;
+}
+
+.card-corner-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid var(--border-strong);
+  border-left: 2px solid var(--border-strong);
+  pointer-events: none;
+}
