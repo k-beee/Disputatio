@@ -14,14 +14,13 @@ def test_disputatio_full_lifecycle():
     # 0.05 GEN fee represented in Wei
     fee_wei = 50000000000000000
     
-    # 1. Proponent raises a Quaestio (Topic + Thesis) with 0.05 GEN fee
+    # 1. Proponent raises a Quaestio (Topic + Thesis) with 0.05 GEN fee passed to transact
     rc_propose = contract.connect(proponent).raise_quaestio(
         args=[
             "Determinism vs Free Will",
             "Human agency possesses authentic free will, enabling morally accountable choice."
-        ],
-        value=fee_wei
-    ).transact()
+        ]
+    ).transact(value=fee_wei)
     assert tx_execution_succeeded(rc_propose)
     
     # Check that Quaestio was stored
@@ -31,14 +30,13 @@ def test_disputatio_full_lifecycle():
     assert quaestio_id == "Q1"
     assert quaestiones[0]["claim"] == "Human agency possesses authentic free will, enabling morally accountable choice."
     
-    # 2. Opponent challenges with an Antithesis (paying 0.05 GEN fee)
+    # 2. Opponent challenges with an Antithesis (paying 0.05 GEN fee passed to transact)
     rc_challenge = contract.connect(opponent).dispute_thesis(
         args=[
             quaestio_id,
             "Free will is an illusion; all human actions are predetermined by material causality."
-        ],
-        value=fee_wei
-    ).transact()
+        ]
+    ).transact(value=fee_wei)
     assert tx_execution_succeeded(rc_challenge)
     
     # Check updated stats
