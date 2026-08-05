@@ -2,13 +2,44 @@
 from genlayer import *
 import json
 
+# Fallback definition for local Python import compatibility
+try:
+    u256
+except NameError:
+    u256 = int
+
+try:
+    gl
+except NameError:
+    class MockVM:
+        class UserError(Exception):
+            def __init__(self, message):
+                self.message = message
+                super().__init__(message)
+    class MockWriteDecorator:
+        def __call__(self, func):
+            return func
+        def payable(self, func):
+            return func
+    class MockPublicDecorator:
+        write = MockWriteDecorator()
+        def view(self, func):
+            return func
+    class MockGL:
+        vm = MockVM
+        public = MockPublicDecorator()
+        class Contract:
+            pass
+    gl = MockGL()
+
+
 # Scholastic Exception Markers
 ERR_EXPECTED_INPUT = "[EXPECTED_INPUT]"
 ERR_CONVERGENCE_FAIL = "[CONVERGENCE_FAIL]"
 
 # Configuration constants
 PAGE_SIZE = 20
-OBJECTION_THRESHOLD = 12       # margin threshold (0-100) needed for an objection to overthrow the thesis
+OBJECTION_THRESHOLD = 60       # margin threshold (0-100) needed for an objection to overthrow the thesis
 MAX_TOPIC_LEN = 90
 MAX_THESIS_LEN = 500
 MAX_HISTORY_ENTRIES = 24       # number of past thesis entries stored per disputation
@@ -49,6 +80,13 @@ def _parse_judgment(raw_output) -> dict:
         raise gl.vm.UserError(f"{ERR_CONVERGENCE_FAIL} Non-numeric margin returned by arbiter.")
         
     reasoning_summary = str(raw_output.get("note", "")).strip()[:240]
+    
+    # Enforce threshold consistency during evaluation parsing
+    if verdict == "OVERTHROW" and margin < OBJECTION_THRESHOLD:
+        raise gl.vm.UserError(f"{ERR_CONVERGENCE_FAIL} Contradictory outcome: OVERTHROW verdict must have a margin of at least {OBJECTION_THRESHOLD}.")
+    if verdict == "DEFEND" and margin >= OBJECTION_THRESHOLD:
+        raise gl.vm.UserError(f"{ERR_CONVERGENCE_FAIL} Contradictory outcome: DEFEND verdict must have a margin below {OBJECTION_THRESHOLD}.")
+        
     return {"verdict": verdict, "margin": margin, "note": reasoning_summary}
 
 
