@@ -58,6 +58,7 @@ Natural language debates are highly subjective, introducing consensus split risk
 The contract implements a two-tier stabilization architecture inside `_adjudicate`:
 - **Categorical Verdict:** Validators must agree exactly on the text verdict (`DEFEND` vs `OVERTHROW`).
 - **Subjective Margin:** Validators allow a numeric tolerance gap of up to **30 points** on the margin score (how decisively the overthrow was made). This prevents minor model sampling variations from causing consensus splits.
+- **Consistent Overthrow Threshold:** The contract enforces that an `OVERTHROW` verdict must carry a margin score of at least **60 points** (scale 0-100). This threshold is enforced in the prompt, verified inside the contract parser (`_parse_judgment`) to reject contradictory values, and covered in our integration test suite.
 
 ### 3. Scriptorium Treasury (0.05 GEN Fees)
 To prevent spam, Sybil attacks, and frivolous consensus calls, creating a Quaestio and submitting an Antithesis require a transaction fee of **0.05 GEN** (50,000,000,000,000,000 Wei). Fees accumulate in the contract's balance and can be withdrawn securely by the contract deployer (Owner) via `withdraw_fees`.
