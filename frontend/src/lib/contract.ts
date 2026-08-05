@@ -4,7 +4,7 @@ import { studionet } from 'genlayer-js/chains';
 // Disputatio contract address on GenLayer StudioNet.
 // Set as empty string initially; the user will deploy and provide the address.
 export const CONTRACT_ADDRESS =
-  '0x925DADc52640F1357D62028A36A355142cEdE866' as `0x${string}`;
+  '0x6A9Ed3fA79775e162faC0EB35e79251DB03566Ba' as `0x${string}`;
 export const DEPLOY_TX = '';
 
 export const EXPLORER_URL = 'https://explorer-studio.genlayer.com';
