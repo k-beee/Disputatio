@@ -5,7 +5,7 @@
 Disputatio is an on-chain coliseum for formal logical debates, inspired by the scholastic disputation method of medieval universities. In this arena, ideas are rigorously scrutinized under the objective adjudication of an AI validator jury inside GenLayer's consensus loop. Users raise a *Quaestio* (topic), establish a *Thesis* (reigning argument), and challenge it with an *Antithesis* (refutation). The reigning Thesis holds by default unless the Antithesis is logically and empirically superior.
 
 - **GitHub Repository:** [k-beee/Disputatio](https://github.com/k-beee/Disputatio)
-- **Deployed Contract (StudioNet):** `0x925DADc52640F1357D62028A36A355142cEdE866`
+- **Deployed Contract (StudioNet):** `0x6A9Ed3fA79775e162faC0EB35e79251DB03566Ba`
 - **Live Deployment URL:** [https://disputatio-sooty.vercel.app/](https://disputatio-sooty.vercel.app/)
 
 ---
